@@ -1,0 +1,16 @@
+installing sdl2 and ruby bindings
+apt-cache search sdl2
+install libsdl2-dev
+install libsdl2-image-dev
+install libsdl2-mixer-dev
+install libsdl2-ttf-dev
+
+DIDNT install
+libsdl2-net-dev
+libsdl2-gfx-dev
+
+continuing:
+gem install ruby-sdl2
+
+
+

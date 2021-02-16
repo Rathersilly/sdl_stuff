@@ -1,0 +1,38 @@
+://www.geeksforgeeks.org/compiling-with-g-plus-plus/
+
+It compiles and creates object code for the files helloWorld.cpp and hello.cpp to helloWorld.o and hello.o respectively.
+
+g++ -c helloWorld.cpp hello.cpp
+
+
+It links the object codes helloWorld.o and hello.o to create an executable file main.exe
+
+g++ -o main.exe helloWorld.o hello.o
+g++ -o main.exe helloWorld.cpp hello.cpp
+
+-o specify output file name
+-v verbose
+
+https://www3.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html#zz-1.2
+
+include path to libraries (https://stackoverflow.com/questions/6141147/how-do-i-include-a-path-to-libraries-in-g):
+To specify a directory to search for (binary) libraries, you just use -L:
+
+-L/data[...]/lib
+
+To specify the actual library name, you use -l:
+
+-lfoo  # (links libfoo.a or libfoo.so)
+
+To specify a directory to search for include files (different from libraries!) you use -I:
+
+-I/data[...]/lib
+
+So I think what you want is something like
+
+g++ -g -Wall -I/data[...]/lib testing.cpp fileparameters.cpp main.cpp -o test
+
+"file" Utility - Determine File Type
+"nm" Utility - List Symbol Table of Object Files
+"ldd" Utility - List Dynamic-Link Libraries
+
