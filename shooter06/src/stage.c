@@ -61,13 +61,18 @@ static void initPlayer()
 	stage.fighterTail = player;
 	
 	player->x = 100;
-	player->y = 100;
+	player->y = 200;
 	player->texture = loadTexture("gfx/player.png");
 	SDL_QueryTexture(player->texture, NULL, NULL, &player->w, &player->h);
 }
 
 static void logic(void)
 {
+
+	if (app.keyboard[SDL_SCANCODE_Q]) {
+		exit(0);
+	}
+
 	doPlayer();
 	
 	doFighters();
@@ -220,7 +225,16 @@ static void drawFighters(void)
 	
 	for (e = stage.fighterHead.next ; e != NULL ; e = e->next)
 	{
-		blit(e->texture, e->x, e->y);
+
+		if (e == stage.fighterHead.next) {
+			blit(e->texture, e->x, e->y, 1);
+			SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO, "blitting player", NULL);
+		}
+		else {
+			blit(e->texture, e->x, e->y, 1);
+			SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO, "blitting enemy", NULL);
+		
+		}
 	}
 }
 

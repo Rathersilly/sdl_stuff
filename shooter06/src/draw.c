@@ -22,7 +22,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 void prepareScene(void)
 {
-	SDL_SetRenderDrawColor(app.renderer, 32, 32, 32, 255);
+	//SDL_SetRenderDrawColor(app.renderer, 32, 32, 32, 255);
+	SDL_SetRenderDrawColor(app.renderer, 100, 100, 200, 255);
 	SDL_RenderClear(app.renderer);
 }
 
@@ -42,13 +43,17 @@ SDL_Texture *loadTexture(char *filename)
 	return texture;
 }
 
-void blit(SDL_Texture *texture, int x, int y)
+void blit(SDL_Texture *texture, int x, int y, int scale)
 {
 	SDL_Rect dest;
 	
 	dest.x = x;
 	dest.y = y;
 	SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
+	if (scale != 1) {
+	dest.w *= scale;
+	dest.h *= scale;
+	}
 	
 	SDL_RenderCopy(app.renderer, texture, NULL, &dest);
 }
